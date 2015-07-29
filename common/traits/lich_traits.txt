@@ -1,0 +1,32 @@
+lich = {
+	customizer = no
+	cached = yes
+	opposite_opinion = -100
+	monthly_character_prestige = 0.5
+	monthly_character_piety = -0.1
+	cannot_marry = yes
+	immortal = yes
+	
+	intrigue = 3
+	learning = 5
+	opposites = {
+		creature_human
+		creature_orc               
+		creature_elf
+   		creature_goblin
+  	    	creature_snotling
+		creature_skink  
+		creature_skaven
+		creature_ogre
+		creature_beastman 
+		creature_chaosspawn
+		creature_dwarf
+		creature_chaos_dwarf
+		creature_halfling
+	}
+	
+	ai_ambition = 100
+	ai_greed = 50
+	ai_honor = 10
+	ai_rationality = 25
+}

@@ -1,0 +1,19 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_trait_lich"
+		texturefile = "gfx/traits/lich.tga"
+		noOfFrames = 1
+		norefcount = yes
+		effectFile = "gfx/FX/buttonstate.lua"
+	}
+	
+	spriteType = {
+		name = "GFX_lichdom"
+		texturefile = "gfx/interface/lich_decision.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_forgephylactery"
+		texturefile = "gfx/interface/lich_decision.dds"
+	}
+}

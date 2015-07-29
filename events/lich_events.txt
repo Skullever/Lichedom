@@ -1,0 +1,288 @@
+namespace = lich
+
+character_event = {
+	id = lich.1
+	desc = EVTDESClich1
+	picture = "GFX_evt_zombies"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAlich1
+		set_character_flag = taken_lich_decision
+		piety = -50
+	}
+	
+	option = {
+		name = EVTOPTBlich1
+		prestige = -100
+		piety = 50
+	}
+}
+
+character_event = {
+	id = lich.2
+	desc = EVTDESClich2
+	picture = "GFX_evt_zombies"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAlich2
+		trigger = { NOT = {
+			has_character_flag = harvested_heart
+		}	}
+		ROOT = {
+			set_character_flag = harvested_heart
+			set_character_flag = harvesting_parts
+			FROM = {
+				death = {
+					death_reason = death_sacrificed
+					killer = ROOT 
+				}
+			}
+		}
+	} #Harvest living heart
+	
+	option = {
+		name = EVTOPTBlich2
+		trigger = { NOT = {
+			has_character_flag = harvested_brain
+		}	}
+		ROOT = {
+			set_character_flag = harvested_brain
+			set_character_flag = harvesting_parts
+			FROM = {
+				death = {
+					death_reason = death_sacrificed
+					killer = ROOT 
+				}
+			}
+		}
+	} #Harvest living brain
+	
+	option = {
+		name = EVTOPTClich2
+		trigger = { NOT = {
+		has_character_flag = harvested_soul
+		}	}
+		ROOT = {
+			set_character_flag = harvested_soul
+			set_character_flag = harvesting_parts
+			FROM = {
+				death = {
+					death_reason = death_sacrificed
+					killer = ROOT 
+				}
+			}
+		}
+	} #Drain soul
+}
+
+character_event = {
+	id = lich.3
+	desc = EVTDESClich3
+	picture = "GFX_evt_zombies"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAlich3
+		hidden_tooltip = {
+		narrative_event = { id = lich.4  days = 365 }
+		clr_character_flag = harvested_brain
+		clr_character_flag = harvested_heart
+		clr_character_flag = harvested_soul
+		clr_character_flag = harvesting_parts
+		}
+	}
+}
+
+narrative_event = {
+	id = lich.4
+	desc = EVTDESClich4
+	picture = "GFX_evt_zombies"
+	title = EVTTITLElich4
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAlich4
+		character_event = { id = lich.6 day = 30 }
+		add_trait = incapable
+	}
+}
+
+character_event = {
+	id = lich.5
+	desc = EVTDESClich5
+	picture = "GFX_evt_zombies"
+	
+	trigger = {
+		has_character_flag = harvesting_parts
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = EVTOPTAlich5
+		hidden_tooltip = {clr_character_flag = harvesting_parts}
+	}
+}
+
+character_event = {
+	id = lich.6
+	desc = EVTDESClich6
+	picture = "GFX_evt_zombies"
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAlich6
+		remove_trait = incapable
+		remove_trait = lore_necromancy
+		add_trait = lich
+		prestige = 500
+		piety = 50
+		religion = nagashi
+		culture = lich
+		hidden_tooltip = {
+			set_graphical_culture = lich
+			remove_character_modifier = magic_power_1
+			remove_character_modifier = magic_power_2
+			remove_character_modifier = magic_power_3 
+			remove_character_modifier = magic_power_4 
+			clr_character_flag = taken_lich_decision  }
+		add_character_modifier = { name = magic_power_4 duration = -1 }
+	}
+}
+
+#########################################################################
+###############################LICHERMANCY###############################
+
+character_event = {
+	id = lich.7
+	desc = EVTDESClich7
+	picture = "GFX_evt_zombies"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAlich7
+		ROOT = {
+			set_character_flag = devoured_soul
+			piety = 100
+			FROM = {
+				death = { 
+				death_reason = death_sacrificed
+				killer = root
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = lich.8
+	hide_window = yes
+	
+	trigger = {
+		has_character_flag = devoured_soul
+	}
+	
+	mean_time_to_happen = {
+		years = 1
+	}
+	
+	immediate = {
+		clr_character_flag = devoured_soul
+		clr_character_flag = summoned_horde
+	}
+	
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = lich.9
+	desc = EVTDESClich9
+	picture = "GFX_evt_zombies"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = EVTOPTAlich9
+		piety = -100
+		set_character_flag = summonedhorde
+		spawn_unit = {
+			owner = ROOT
+			province = location
+			home = ROOT
+			troops = {
+				undead_horde = { 100 100 }
+			}
+			attrition = 0
+			maintenance_multiplier = 0
+		}
+	}
+	
+	option = {
+		trigger = {
+			piety = 500
+		}
+		name = EVTOPTBlich9
+		piety = -500
+		set_character_flag = summonedhorde
+		spawn_unit = {
+			owner = ROOT 
+			province = location
+			home = ROOT 
+			troops = {
+				undead_horde = { 500 500 }
+			}
+			attrition = 0
+			maintenance_multiplier = 0
+		}
+	}
+	
+	option = {
+		trigger = {
+			piety = 1000
+		}
+		name = EVTOPTClich9
+		piety = -1000
+		set_character_flag = summonedhorde
+		spawn_unit = {
+			owner = ROOT 
+			province = location
+			home = ROOT 
+			troops = {
+				undead_horde = { 1000 1000 }
+			}
+			attrition = 0
+			maintenance_multiplier = 0
+		}
+	}
+	
+	option = {
+		trigger = {
+			piety = 5000
+		}
+		name = EVTOPTDlich9
+		piety = -5000
+		set_character_flag = summonedhorde
+		spawn_unit = {
+			owner = ROOT 
+			province = any_realm_province
+			home = ROOT 
+			troops = {
+				undead_horde = { 5000 5000 }
+			}
+			attrition = 0
+			maintenance_multiplier = 0
+		}
+	}
+}

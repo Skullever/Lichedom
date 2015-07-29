@@ -1,0 +1,24 @@
+necromancer = {
+	graphical_culture = lichgfx
+
+	lich = {
+		graphical_culture = lichgfx
+		
+		color = { 0.85 0.55 0.15 }
+
+		male_names = {
+			Lich
+		}
+		female_names = {
+			FLich
+		}
+		
+		
+		prefix = no
+		
+		dynasty_title_names = yes
+		founder_named_dynasties = yes
+
+		modifier = default_culture_modifier
+	}
+}

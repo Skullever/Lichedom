@@ -1,0 +1,236 @@
+decisions = {
+
+	lichdom = { #for private characters studying by themselves
+		is_high_prio = yes
+		potential = {	is_ruler = yes
+				higher_tier_than = BARON
+				prisoner = no
+				age = 16
+				NOT = { has_character_flag = taken_hedge_wizard_decision }
+				NOT = { has_character_flag = taken_lich_decision }
+				OR = { independent = yes
+					liege = { NOT = { religion = taalite } 
+						NOT = { religion = ulrican }
+						NOT = { religion = manannite } 
+						NOT = { religion = shallyan }  
+						NOT = { religion = myrmidian } 
+						NOT = { religion = grail }
+						NOT = { religion = sigmarite } 
+						NOT = { religion = ursun } } }
+				trait = lore_necromancy
+				NOT = { top_liege = { trait = malekith } }
+				NOT = { trait = king_settra }
+				NOT = { trait = hedge_wizard }
+				NOT = { trait = mage_apprentice }
+				NOT = { trait = incapable }
+				NOT = { trait = lich }
+				NOT = { has_character_modifier = magic_power_1 }
+				NOT = { has_character_modifier = magic_power_2 }
+		}
+		
+		allow = {
+			learning = 15
+			wealth = 150
+		}
+		
+		effect = {
+			wealth = -150
+			hidden_tooltip = { set_character_flag = taken_lich_decision 
+					if = { limit = { NOT = { age = 16 } }
+						set_character_flag = learning_as_kid } 
+					character_event = { id = lich.1 } #Start studying
+					if = { limit = { religion_group = cadai_group
+								e_ulthuan = { holder_scope  = { religion_group = cadai_group } } } 
+							e_ulthuan = { holder_scope  = { opinion = { modifier = opinion_unauthorized_tutoring
+													who = ROOT } } }
+						} 
+					if = { limit = { 	religion_group = cytharai_group
+								is_female = yes
+								e_naggaroth = { holder_scope  = { trait = malekith } } } 
+							e_naggaroth = { holder_scope  = { opinion = { modifier = opinion_unauthorized_tutoring
+													who = ROOT } } }
+						} 
+					if = { limit = { trait = creature_elf
+								is_female = no
+								e_naggaroth = { holder_scope  = { trait = malekith } } } 
+							e_naggaroth = { holder_scope  = { opinion = { modifier = opinion_sorcerous_rival
+													who = ROOT } } }
+						} 
+					 } 
+		}
+		
+		revoke_allowed = { always = yes }
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.001
+				}
+			modifier = {
+				factor = 0.01
+				NOT = { wealth = 800 }
+				}
+			modifier = {
+				factor = 10
+				has_character_flag = undead_insight
+				}
+			modifier = {
+				factor = 0
+				NOT = { has_character_flag = undead_insight }
+				NOT = { trait = ambitious }
+				NOT = { trait = scholar }
+				NOT = { trait = mystic }
+				NOT = { trait = envious }
+				NOT = { trait = cruel }
+				NOT = { trait = depressed }
+				NOT = { has_character_modifier = fake_mage } 
+				}
+		} #closesaiwilldo
+	} #closesevent
+	
+	forgephylactery = {
+		is_high_prio = yes
+		potential = {	is_ruler = yes
+				higher_tier_than = BARON
+				prisoner = no
+				age = 16
+				NOT = { has_character_flag = taken_hedge_wizard_decision }
+				OR = { independent = yes
+					liege = { NOT = { religion = taalite } 
+						NOT = { religion = ulrican }
+						NOT = { religion = manannite } 
+						NOT = { religion = shallyan }  
+						NOT = { religion = myrmidian } 
+						NOT = { religion = grail }
+						NOT = { religion = sigmarite } 
+						NOT = { religion = ursun } 
+					} 
+				}
+				trait = lore_necromancy
+				NOT = { top_liege = { trait = malekith } }
+				NOT = { trait = king_settra }
+				NOT = { trait = hedge_wizard }
+				NOT = { trait = mage_apprentice }
+				NOT = { trait = incapable }
+				has_character_flag = harvested_brain
+				has_character_flag = harvested_heart
+				has_character_flag = harvested_soul
+		}
+		
+		allow = {
+			learning = 15
+			wealth = 1000
+		}
+		
+		effect = {
+			wealth = -1000
+			character_event = { id = lich.3 }
+		}
+	}
+	
+	summonminions = {
+		potential = {
+			is_ruler = yes
+			age = 16
+			trait = lich
+		}
+		allow = {
+			learning = 15
+			piety = 100
+		}
+		effect = {
+			character_event = { id = lich.9 }
+		}
+	}
+}
+
+targetted_decisions = {
+	lichdomharvest = {
+		is_high_prio = yes
+		filter = home_court
+		ai_target_filter = home_court
+		from_potential = {	is_ruler = yes
+			higher_tier_than = BARON
+			prisoner = no
+			age = 16
+			learning = 15
+			NOT = { trait = kind }
+			NOT = {	has_character_flag = harvesting_parts }
+			NOT = { trait = craven }
+			NOT = { has_character_flag = taken_hedge_wizard_decision }
+			has_character_flag = taken_lich_decision
+			OR = { independent = yes
+				liege = { NOT = { religion = taalite } 
+					NOT = { religion = ulrican }
+					NOT = { religion = manannite } 
+					NOT = { religion = shallyan }  
+					NOT = { religion = myrmidian } 
+					NOT = { religion = grail }
+					NOT = { religion = sigmarite } 
+					NOT = { religion = ursun } 
+				} 
+			}
+				trait = lore_necromancy
+				NOT = { top_liege = { trait = malekith } }
+				NOT = { trait = king_settra }
+				NOT = { trait = hedge_wizard }
+				NOT = { trait = mage_apprentice }
+				NOT = { trait = incapable }
+				NOT = {
+					AND = {
+						has_character_flag = harvested_brain
+						has_character_flag = harvested_heart
+						has_character_flag = harvested_soul
+					}
+				}
+			}
+		
+		potential = {
+			prisoner = yes
+		}
+		
+		allow = {
+			NOT = {dynasty = FROM}
+		}
+		
+		effect = {
+			host = {character_event = { id = lich.2 } }
+		}
+	}
+	
+	lich_harvest_soul = {
+		filter = home_court
+		ai_target_filter = home_court
+		
+		from_potential = {
+			is_ruler = yes
+			age = 16
+			learning = 15
+			NOT = { trait = kind }
+			NOT = { trait = craven }
+			NOT = { trait = content }
+			NOT = { has_character_flag = devoured_soul }
+			trait = lich
+		}
+		
+		potential = {
+			prisoner = yes
+		}
+		
+		allow = {
+			NOT = {
+				OR = {
+					trait = creature_nehekharan
+					trait = tzeentch_demon
+					trait = khorne_demon
+					trait = nurgle_demon
+					trait = hashut_kdaai
+				}
+			}
+		}
+		
+		effect = {
+			host = {character_event = { id = lich.7 } }
+		}
+	}
+}

@@ -1,0 +1,37 @@
+forgephylactery;Forge Phylactery;;;;;;;;;x
+forgephylactery_desc;You have gathered the proper reagents, the time to forge the container for your soul has come.;;;;;;;;;x
+lichdom;Ascend to Lichdom;;;;;;;;;x
+lichdom_desc;The Great Necromancer Nagash was able to defeat death, ascending to Lichedom. As a student of his work, you can attempt the ritual.;;;;;;;;;x
+lichdomharvest;Harvest Organs;;;;;;;;;x
+lichdomharvest_desc;In order to ascend, you require a living heart, brain, and soul.;;;;;;;;;x
+EVTDESClich1;The ritual to ascend to Lichedom is complicated, requiring vital organs taken from another living being to be placed in a phylactery while still living. After an invocation, you must thrust a knife into your own heart, after which your soul will be contained in the phylactery and you will become immortal.;;;;;;;;;x
+EVTOPTAlich1;I will surpass even Nagash!;;;;;;;;;x
+EVTOPTBlich1;The risk is too high.;;;;;;;;;x
+EVTDESClich2;From this prisoner I can begin to harvest the necessary organs for the ritual.;;;;;;;;;x
+EVTOPTAlich2;I'll take the prisoner's heart.;;;;;;;;;x
+EVTOPTBlich2;Your brain will be mine!;;;;;;;;;x
+EVTOPTClich2;You will live, but your soul shall serve me for eternity!;;;;;;;;;x
+EVTDESClich3;You have all that you need, all that remains is to forge a phylactery to contain your own soul.;;;;;;;;;x
+EVTOPTAlich3;Bring me the greatest smith in the land!;;;;;;;;;x
+EVTDESClich4;The phylactery is complete. The harvested organs have been placed inside, and all that remains is to end your own life and begin your undeath.;;;;;;;;;x
+EVTOPTAlich4;All shall know my name and despair.;;;;;;;;;x
+EVTDESClich6;You have awakened from the ritual, freed from your mortal shell.;;;;;;;;;x
+EVTOPTAlich6;All who live are dust beneath my feet.;;;;;;;;;x
+lich;Liche;;;;;;;;;x
+lich_desc;This character is a master necromancer who has ascended to undeath and become immortal.;;;;;;;;;x
+necromancer;Necromancer;;;;;;;;;x
+harvesting_parts;Harvesting Organs;;;;;;;;;x
+lichdomharvest_named;Harvest Organs from [Root.GetBestName].;;;;;;;;;x
+EVTTITLElich4;The Final Sacrifice;;;;;;;;;x
+EVTDESClich5;You have finished harvesting organs from your last victim, on to the next one.;;;;;;;;;x
+EVTOPTAlich5;Soon immortality will be mine...;;;;;;;;;x
+summonminions;Bring Forth the Dead;;;;;;;;;x
+lich_harvest_soul;Devour Soul;;;;;;;;;x
+lich_harvest_soul_named;Devour Soul of [Root.GetBestName];;;;;;;;;x
+EVTDESClich7;The prisoner is dragged before your throne, screaming profanities.;;;;;;;;;x
+EVTOPTAlich7;Your soul is mine...;;;;;;;;;x
+EVTDESClich9;You have devoured enough souls to power a ritual to summon the dead.;;;;;;;;;x
+EVTOPTAlich9;Bring forth my personal guard.;;;;;;;;;x
+EVTOPTBlich9;Awaken my battalion.;;;;;;;;;x
+EVTOPTClich9;Call forth the army!;;;;;;;;;x
+EVTOPTDlich9;Unleash the legions of the damned!;;;;;;;;;x
